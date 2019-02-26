@@ -24,3 +24,6 @@ Mitigation Stragegies:
 Development Method: We will adapt the scrum development method to suit our development needs.  We will likely start without the ScrumMaster role assigned, as our team is small.  At the moment we are planning to meet weekly on Tuesdays at 1:00 pm and have a small sprint each week.  This will serve as the sprint planning meeting where we can create the sprint backlog.  As the final due date approaches we will likely meet more frequently to check in like a Scrum meeting.
 
 Project Tracking Software: Trello
+
+
+This is Max commiting something
