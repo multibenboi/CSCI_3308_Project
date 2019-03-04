@@ -26,11 +26,10 @@ export class UserComponent implements OnInit {
 
   }
   onClick(){
-      this.name="Max Reynolds";
-      this.email='maxreynolds55@gmail.com'
+      this.name="John Doe";
+      this.email='johndoe@gmail.com'
       this.address.street='100 Pearl Street'
       this.age=23;
-      this.beers.push('Other')
   }
 
   addBeer(beer){
