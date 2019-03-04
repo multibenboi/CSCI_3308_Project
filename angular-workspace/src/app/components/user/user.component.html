@@ -1,0 +1,42 @@
+<h1>Hello {{name}}</h1>
+<img src="assets/img/beer.jpg" alt="beer">
+
+<ul>
+    <li>Age: {{age}}</li>
+    <li>Email: {{email}}</li>
+    <li>{{address.street}} {{address.city}} {{address.state}}</li>
+</ul>
+<button (click)="onClick()">Click Me</button>
+
+<style>
+  h1 {color: brown;}
+</style>
+
+<h1>Edit User</h1>
+<form>
+    <div>
+        <label for="name">Name: </label><br>
+        <input type="text" [(ngModel)]="name" name="name">
+    </div>
+    <div>
+        <label for="email">Email: </label><br>
+        <input type="text" [(ngModel)]="email" name="email">
+    </div>
+    <div>
+        <label for="street">Street: </label><br>
+        <input type="text" [(ngModel)]="address.street" name="street">
+    </div>
+</form>
+
+<h1>Favorite Beers</h1>
+<form (submit)="addBeer(beer.value)">
+    <div>
+        <label for="beer">Beer:</label>
+        <input type="text" #beer>
+    </div>
+</form>
+<ul>
+    <li *ngFor="let beer of beers; let i = index"> {{i+1}}: {{beer}}
+    <button (click)="deleteBeer(beer)">Delete</button>
+    </li>
+</ul>
