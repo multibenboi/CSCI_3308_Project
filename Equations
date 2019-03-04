@@ -1,0 +1,26 @@
+International Bitterness Unit (IBU) Calculation
+  
+  IBU = W*U%*A%*1000/(V*Cg)
+  
+    W = weight of hop addition in grams
+    U% = Utilization from table accounting for gravity and time
+    A% = Alpha acid content of hops
+    V = colume of batch in L
+    Cg = Correction factor is 1 unless specific gravity (SG) > 1.050
+    Cg = 1+(SG(boil)-1.050)/2
+
+Specific Gravity Calculation
+
+  SG = 1+S*Y/V
+  
+    S = mass of sugar added in lb
+    Y = Yield of sugar in pt/lb/gal (this is specific to type of sugar added)
+    V = Volume of liquid in gal
+    
+Alcohol by Volume (ABV) calculation
+
+  ABV= 131.25*(OG-FG)
+    OG = specific gravity of beer before fermentation
+    FG = specific gravity of beer after fermentation
+ 
+  
