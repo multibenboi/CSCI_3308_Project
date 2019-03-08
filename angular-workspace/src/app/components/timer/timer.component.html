@@ -1,3 +1,14 @@
-<p>
-  This is the timer!
-</p>
+<h1>
+  This is the timer:
+</h1>
+
+<button (click)='startTimerIfPaused()'>Start Time</button>
+<button (click)='pauseTimer()'> Pause</button>
+<br><br>
+<form (submit)="changeTime(t.value)">
+    <div>
+        <label for="t">Time:</label>
+        <input type="number" #t>
+    </div>
+</form>
+<p>{{timeLeft}} Seconds Left....</p>
