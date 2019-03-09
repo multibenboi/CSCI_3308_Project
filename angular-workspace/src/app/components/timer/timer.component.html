@@ -11,4 +11,18 @@
         <input type="number" #t>
     </div>
 </form>
+<br><br>
+<form>
+        <label for="h">Hours:</label>
+        <input type="number" #h>
+</form>
+<form>
+        <label for="m">Minutes:</label>
+        <input type="number" #m>
+</form>
+<form>
+        <label for="s">Seconds:</label>
+        <input type="number" #s>
+</form>
+<button (click)='changeTime2(h.value, m.value, s.value)'> Add Time</button>
 <p>{{hoursLeft}} Hours {{modMinutesLeft}} Minutes {{modSecondsLeft}} Seconds Left....</p>

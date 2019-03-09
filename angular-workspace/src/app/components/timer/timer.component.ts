@@ -48,6 +48,16 @@ export class TimerComponent {
         this.hoursLeft=Math.floor(this.secondsLeft/3600);
     }
 
+    changeTime2(h,m,s){
+        console.log(s);
+        console.log(m);
+        console.log(h);
+        this.secondsLeft=3600*(Number(h)) + 60*(Number(m)) + Number(s);
+        this.modSecondsLeft=this.secondsLeft%60;
+        this.minutesLeft=Math.floor(this.secondsLeft/60);
+        this.modMinutesLeft=this.minutesLeft%60;
+        this.hoursLeft=Math.floor(this.secondsLeft/3600);
+    }
     pauseTimer(){
         this.paused = true;
         clearInterval(this.interval);
