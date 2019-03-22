@@ -35,6 +35,7 @@ export class TimerComponent {
                 }
             } else{
                 this.pauseTimer();
+                this.playAlert();
                 //this.changeTime(30);
             }
         },1000)
@@ -61,6 +62,13 @@ export class TimerComponent {
     pauseTimer(){
         this.paused = true;
         clearInterval(this.interval);
+    }
+
+    playAlert(){
+        var audio = new Audio();
+        audio.src="assets/alarm.mp3"
+        audio.load();
+        audio.play();
     }
 
 }
