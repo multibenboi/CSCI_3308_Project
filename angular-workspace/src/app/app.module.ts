@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { TimerComponent } from './components/timer/timer.component';
+import { WebframeComponent } from './webframe/webframe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    TimerComponent
+    TimerComponent,
+    WebframeComponent
   ],
   imports: [
     BrowserModule,

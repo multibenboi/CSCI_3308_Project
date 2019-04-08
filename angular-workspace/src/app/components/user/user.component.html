@@ -1,18 +1,20 @@
-<h1>Hello {{name}}</h1>
+
+<div class="userBlurbs"><h2>Hello {{name}}</h2>
+
 <img src="assets/img/beer.jpg" alt="beer">
 
+
 <ul>
-    <li>Age: {{age}}</li>
     <li>Email: {{email}}</li>
     <li>{{address.street}} {{address.city}} {{address.state}}</li>
 </ul>
-<button (click)="onClick()">Click Me</button>
+
 
 <style>
-  h1 {color: brown;}
+
 </style>
 
-<h1>Edit User</h1>
+<h2>Edit User</h2>
 <form>
     <div>
         <label for="name">Name: </label><br>
@@ -26,9 +28,10 @@
         <label for="street">Street: </label><br>
         <input type="text" [(ngModel)]="address.street" name="street">
     </div>
+   <!-- <button (click)="onClick()">Click Me</button> -->
 </form>
 
-<h1>Favorite Beers</h1>
+<h2>Favorite Beers</h2>
 <form (submit)="addBeer(beer.value)">
     <div>
         <label for="beer">Beer:</label>
@@ -40,3 +43,5 @@
     <button (click)="deleteBeer(beer)">Delete</button>
     </li>
 </ul>
+</div>
+
