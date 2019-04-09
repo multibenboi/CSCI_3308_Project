@@ -10,7 +10,15 @@ div.titlebanner {
 div.navbar {
   float: left;
   width: 20%;
+  border: 1px solid black;
+  border-top: none;
   min-height: 800px;
   overflow: hidden;
   background-color: #edb001;
+}
+
+h2.button {
+  border: 1px solid black;
+  border-right: none;
+  border-left: none;
 }
