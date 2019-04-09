@@ -1,3 +1,18 @@
-width:40%;
-float:left;
+
+
+h1 {
+  color: black;
+  font-family: "American Typewriter", Helvetica, sans-serif;
+  background-color: #edb001;
+  border: 1px solid black;
+}
+h2 {
+  color: brown;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+div.userBlurbs {
+  float: right;
+  width: 79%;
+}
 /*trying to get the components side-by-side...*/
