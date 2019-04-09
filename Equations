@@ -9,7 +9,7 @@ International Bitterness Unit (IBU) Calculation
     Cg = Correction factor is 1 unless specific gravity (SG) > 1.050
     Cg = 1+(SG(boil)-1.050)/2
 
-Specific Gravity Calculation
+Specific Gravity Calculation (needs work to find yield values)
 
   SG = 1+S*Y/V
   
