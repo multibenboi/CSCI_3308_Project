@@ -8,11 +8,13 @@ import { UserComponent } from './components/user/user.component';
 import { TimerComponent } from './components/timer/timer.component';
 import { WebframeComponent } from './webframe/webframe.component';
 import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'user', component: UserComponent },
-  { path: 'timer', component: TimerComponent }
+  { path: 'timer', component: TimerComponent },
+  { path: 'signup', component: SignupComponent }
 ];
 
 @NgModule({
@@ -21,7 +23,8 @@ const appRoutes: Routes = [
     UserComponent,
     TimerComponent,
     WebframeComponent,
-    HomeComponent
+    HomeComponent,
+    SignupComponent
   ],
   imports: [
     RouterModule.forRoot(
