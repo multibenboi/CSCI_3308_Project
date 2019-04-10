@@ -14,6 +14,10 @@
         <input type="text" #user>
     </div>
     </form>
+    <br><br>
+    <div>
+    <button (click)="logout()">Log out</button>
+    </div>
 
     <ul>
         <li *ngFor="let user of usernames; let i = index"> {{i+1}}: {{user}}

@@ -42,5 +42,8 @@ export class SignupComponent implements OnInit {
           this.loggedin=true;
       }
   }
+  logout(){
+      this.loggedin=false;
+  }
 
 }
