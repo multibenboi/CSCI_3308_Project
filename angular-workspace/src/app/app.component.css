@@ -7,6 +7,14 @@ div.titlebanner {
   width: 80%;
 }
 
+div.userbanner{
+    color: black;
+    font-family: "American Typewriter", Helvetica, sans-serif;
+    background-color: #edb001;
+    float: right;
+    width: 80%;
+}
+
 div.navbar {
   float: left;
   width: 20%;

@@ -8,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class SignupComponent implements OnInit {
     usernames:string[];
     loggedin:boolean;
+    login_info:string;
     constructor() { }
 
     ngOnInit() {
         this.usernames=[];
-        this.loggedin = false;
+        this.login_info="Not logged in";
+        //AppComponent.loggedin = false;
   }
   addUser(newuser){
       const regex = /^[a-z/A-Z][a-z/A-Z/\-/_/./0-9]{5}[a-z/A-Z/\-/_/\./0-9]*$/;
