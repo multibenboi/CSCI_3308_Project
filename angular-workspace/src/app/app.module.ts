@@ -9,12 +9,14 @@ import { TimerComponent } from './components/timer/timer.component';
 import { WebframeComponent } from './webframe/webframe.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { EquationsComponent } from './components/equations/equations.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'user', component: UserComponent },
   { path: 'timer', component: TimerComponent },
-  { path: 'signup', component: SignupComponent }
+  { path: 'signup', component: SignupComponent },
+  { path: 'equations', component: EquationsComponent }
 ];
 
 @NgModule({
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
     TimerComponent,
     WebframeComponent,
     HomeComponent,
-    SignupComponent
+    SignupComponent,
+    EquationsComponent
   ],
   imports: [
     RouterModule.forRoot(

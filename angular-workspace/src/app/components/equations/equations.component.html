@@ -1,0 +1,67 @@
+<div class="equations">
+    <h2>Alcohol by Volume (ABV)</h2>
+    <br>
+    <form>
+        <div>
+            <label for = "OG">Enter Original Gravity Measured:</label><br>
+            <input type="number" #OG>
+        </div>
+    </form>
+    <br>
+    <form>
+        <div>
+            <label for = "FG">Enter Original Final Measured:</label><br>
+            <input type="number" #FG>
+        </div>
+    </form>
+
+        <br>
+        <div>
+        <button (click)="ABV(OG.value, FG.value)">Calculate</button>
+        <p>The calculated ABV is {{alc}} %</p>
+        </div>
+    <br>
+    
+    <h2>International Bitterness Units (IBU)</h2>
+    <br>
+    <form>
+        <div>
+            <label for = "W">Enter Weight of hop addition (grams):</label><br>
+            <input type="number" #W>
+        </div>
+    </form>
+    <br>
+    <form>
+        <div>
+            <label for = "A">Enter Alpha Acid Content of hop addition (%):</label><br>
+            <input type="number" #A>
+        </div>
+    </form>
+    <br>
+    <form>
+        <div>
+            <label for = "V">Enter Batch Volume (Liters):</label><br>
+            <input type="number" #V>
+        </div>
+    </form>
+    <br>
+    <form>
+        <div>
+            <label for = "SG">Enter Specific gravity before boil (unitless):</label><br>
+            <input type="number" #SG>
+        </div>
+    </form>
+    <br>
+    <form>
+        <div>
+            <label for = "time">Enter time of hop addition to the boil (minutes):</label><br>
+            <input type="number" #time>
+        </div>
+    </form>
+    <br>
+    <div>
+    <button (click)="IBU(W.value, A.value, V.value)">Calculate</button>
+    <p>The calculated IBU is {{ibu}}</p>
+    </div>
+
+</div>
