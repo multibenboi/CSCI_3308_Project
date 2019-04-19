@@ -55,3 +55,37 @@ Notes
     N/A
 Post-conditions
     N/A
+    
+    
+Equations/Calculations test
+    The equations work properly
+Description
+    Test calculations
+Pre-conditions
+    User is on the equations page
+Test steps
+  ABV Test
+    1. Navigate to Equations page
+    2. Enter Original gravity and Final gravity
+    3. Click Calculate
+  IBU Test
+    1. Navigate to Equations page
+    2. Enter wieght of hops, alpha acid content, batch volume, SG of batch, time of hop addition
+    3. Click Calculate
+Expected result
+  ABV Test
+    1. If the FG is greater than OG, an alert will appear
+    2. Otherwise the calculated ABV will appear below the calculate button
+  IBU Test
+    1. The IBUs will update below the calculate button.
+Actual result
+  ABV Test
+    1. If the FG is greater than OG, an alert appears
+    2. Otherwise the calculated ABV appears below the calculate button
+  IBU Test
+    1. The IBUs updates below the calculate button.
+    Pass
+Notes
+    N/A
+Post-conditions
+    N/A
