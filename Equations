@@ -9,11 +9,11 @@ International Bitterness Unit (IBU) Calculation
 
 Specific Gravity Calculation (needs work to find yield values)
 
-  SG = 1+S*Y/V
+  OG = 1+0.0074*W
   
-    S = mass of sugar added in lb
-    Y = Yield of sugar in pt/lb/gal (this is specific to type of sugar added)
-    V = Volume of liquid in gal
+    W = weight of Liquid Malt extract sugar addition (lb)
+    
+  FG = 1+ (OG-1)*0.26
     
 Alcohol by Volume (ABV) calculation
 
