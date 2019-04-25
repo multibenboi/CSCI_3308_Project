@@ -92,7 +92,32 @@ export class TimerComponent {
         this.paused = true;
         clearInterval(this.interval);
     }
+    deleteRecipe(){
 
+        this.times=[]
+        this.units=[]
+        this.identity=[]
+        this.amount=[]
+        this.buildRecipe()
+        /*
+        this.times.push(t)
+        this.amount.push(a)
+        this.units.push(u)
+        this.identity.push(id)
+        this.buildRecipe()
+        */
+        //console.log(this.recipe)
+    }
+    addIngredient(t, a, u, id){
+        console.log("Hello")
+
+        this.times.push(t)
+        this.amount.push(a)
+        this.units.push(u)
+        this.identity.push(id)
+        console.log(this.times[0])
+        this.buildRecipe()
+    }
     playAlert(){
         var audio = new Audio();
         audio.src="assets/alarm.mp3"
@@ -109,9 +134,11 @@ export class TimerComponent {
     }
 
     buildRecipe(){
+        this.recipe=[]
         for(let i = 0; i < this.times.length; i++){
             this.recipe.push(this.buildStep(i));
         }
+        console.log(this.recipe)
     }
 
     changeCurrStep(){
@@ -120,42 +147,44 @@ export class TimerComponent {
     }
 
 
+
+
     ABV_act(OG, FG){
         console.log(OG<FG);
         if (OG<FG){
             alert('Original Gravity must be greater than Final Gravity');
-            
+
         }
         else{
             this.alc_act = 131.25*(OG-FG);
         }
         return false;
       }
-    
+
       IBU(W, A, V){
         this.ibu=W*0.231*A*1000/V
         return false;
       }
-        
+
       OG_est(W){
         this.og_est=1+0.0074*W
         return false;
       }
-    
+
       FG_est(OG){
         this.fg_est=1+(OG-1)*0.26
         return false;
       }
-      
+
       ABV_est(OG, FG){
         this.alc_est = 131.25*(OG-FG);
         return false;
       }
-    
+
       ABV_est2(W, V){
         this.alc_est2 = 131.25*0.0074*0.74*W*5/V;
       }
-      
+
       W_est(ABV, V){
         this.w_lme = ABV*V/3.593625;
       }

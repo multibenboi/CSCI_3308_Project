@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Hello';
+  loggedin = "Not logged in";
   //loggedin = false;
   //login_info="Not logged in"
 }

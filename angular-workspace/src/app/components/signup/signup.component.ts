@@ -42,10 +42,12 @@ export class SignupComponent implements OnInit {
       }
       else{
           this.loggedin=true;
+          this.login_info="Logged in"
       }
   }
   logout(){
       this.loggedin=false;
+      this.login_info="Not logged in"
   }
 
 }

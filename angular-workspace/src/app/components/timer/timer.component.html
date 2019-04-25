@@ -37,14 +37,36 @@
 
 <div class="recipe">
     <h2> {{recipe}} </h2>
+    <button (click) = 'deleteRecipe(t.value, a.value, u.value, i.value)'>Delete Recipe</button>
+    <br><br>
+
+    <h2> Add Ingredient </h2>
+    <form>
+            <label for="t">Time:</label>
+            <input type="number" #t>
+    </form>
+    <form>
+            <label for="a">Amount:</label>
+            <input type="number" #a>
+    </form>
+    <form>
+            <label for="u">Units:</label>
+            <input type="string" #u>
+    </form>
+    <form>
+            <label for="i">Identity:</label>
+            <input type="string" #i>
+    </form>
+    <button (click)='addIngredient(t.value, a.value, u.value, i.value)'> Add It</button>
 </div>
 
 
 
 
 <div class="equations">
+
   <h2>Alcohol by Volume (ABV)</h2>
-  
+
   <form>
       <div>
           <label for = "OG">Enter Original Gravity Measured:</label><br>
@@ -65,10 +87,10 @@
       <p>The calculated ABV is {{alc_act}} %</p>
       </div>
   <br>
-  
+
 
   <h2>International Bitterness Units (IBU)</h2>
-  
+
   <form>
       <div>
           <label for = "W">Enter Weight of hop addition (grams):</label><br>
@@ -112,7 +134,7 @@
 
 
   <h2>Alcohol Estimate</h2>
-  
+
   <form>
       <div>
           <label for = "Weight">Enter weight of LME (lb):</label><br>
@@ -137,7 +159,7 @@
 
 
   <h2>Liquid Malt Extract Estimate</h2>
-  
+
   <form>
       <div>
           <label for = "abv_des">Enter desired ABV (%):</label><br>
@@ -161,4 +183,3 @@
   <br>
 
 </div>
-
