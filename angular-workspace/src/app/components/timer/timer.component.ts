@@ -21,6 +21,17 @@ export class TimerComponent {
     stepString:string="";
     recipe:string[]=[];
 
+    math=Math;
+    alc_act: number = 0;
+    og_act: number = 0;
+    fg_act: number = 0;
+    alc_est: number = 0;
+    og_est: number = 0;
+    fg_est: number = 0;
+    alc_est2: number = 0;
+    ibu: number = 0;
+    w_lme: number = 0;
+
 
     ngOnInit() {
         this.buildRecipe();
@@ -108,4 +119,44 @@ export class TimerComponent {
         console.log(this.stepString);
     }
 
+
+    ABV_act(OG, FG){
+        console.log(OG<FG);
+        if (OG<FG){
+            alert('Original Gravity must be greater than Final Gravity');
+            
+        }
+        else{
+            this.alc_act = 131.25*(OG-FG);
+        }
+        return false;
+      }
+    
+      IBU(W, A, V){
+        this.ibu=W*0.231*A*1000/V
+        return false;
+      }
+        
+      OG_est(W){
+        this.og_est=1+0.0074*W
+        return false;
+      }
+    
+      FG_est(OG){
+        this.fg_est=1+(OG-1)*0.26
+        return false;
+      }
+      
+      ABV_est(OG, FG){
+        this.alc_est = 131.25*(OG-FG);
+        return false;
+      }
+    
+      ABV_est2(W, V){
+        this.alc_est2 = 131.25*0.0074*0.74*W*5/V;
+      }
+      
+      W_est(ABV, V){
+        this.w_lme = ABV*V/3.593625;
+      }
 }
