@@ -38,3 +38,127 @@
 <div class="recipe">
     <h2> {{recipe}} </h2>
 </div>
+
+
+
+
+<div class="equations">
+  <h2>Alcohol by Volume (ABV)</h2>
+  
+  <form>
+      <div>
+          <label for = "OG">Enter Original Gravity Measured:</label><br>
+          <input type="number" #OG>
+      </div>
+  </form>
+  <br>
+  <form>
+      <div>
+          <label for = "FG">Enter Original Final Measured:</label><br>
+          <input type="number" #FG>
+      </div>
+  </form>
+
+      <br>
+      <div>
+      <button (click)="ABV_act(OG.value, FG.value)">Calculate</button>
+      <p>The calculated ABV is {{alc_act}} %</p>
+      </div>
+  <br>
+  
+
+  <h2>International Bitterness Units (IBU)</h2>
+  
+  <form>
+      <div>
+          <label for = "W">Enter Weight of hop addition (grams):</label><br>
+          <input type="number" #W>
+      </div>
+  </form>
+  <br>
+  <form>
+      <div>
+          <label for = "A">Enter Alpha Acid Content of hop addition (%):</label><br>
+          <input type="number" #A>
+      </div>
+  </form>
+  <br>
+  <form>
+      <div>
+          <label for = "V">Enter Batch Volume (Liters):</label><br>
+          <input type="number" #V>
+      </div>
+  </form>
+  <br>
+  <form>
+      <div>
+          <label for = "SG">Enter Specific gravity before boil (unitless):</label><br>
+          <input type="number" #SG>
+      </div>
+  </form>
+  <br>
+  <form>
+      <div>
+          <label for = "time">Enter time of hop addition to the boil (minutes):</label><br>
+          <input type="number" #time>
+      </div>
+  </form>
+  <br>
+  <div>
+  <button (click)="IBU(W.value, A.value, V.value)">Calculate</button>
+  <p>The calculated IBU is {{ibu}}</p>
+  </div>
+  <br>
+
+
+  <h2>Alcohol Estimate</h2>
+  
+  <form>
+      <div>
+          <label for = "Weight">Enter weight of LME (lb):</label><br>
+          <input type="number" #Weight>
+      </div>
+  </form>
+  <br>
+  <form>
+      <div>
+          <label for = "Volume">Enter volume of batch (gal):</label><br>
+          <input type="number" #Volume>
+      </div>
+  </form>
+  <br>
+
+      <br>
+      <div>
+      <button (click)="ABV_est2(Weight.value, Volume.value)">Calculate</button>
+      <p>The calculated ABV is {{math.round(10*alc_est2)/10}} %</p>
+      </div>
+  <br>
+
+
+  <h2>Liquid Malt Extract Estimate</h2>
+  
+  <form>
+      <div>
+          <label for = "abv_des">Enter desired ABV (%):</label><br>
+          <input type="number" #abv_des>
+      </div>
+  </form>
+  <br>
+  <form>
+      <div>
+          <label for = "Volume">Enter volume of batch (gal):</label><br>
+          <input type="number" #Volume>
+      </div>
+  </form>
+  <br>
+
+      <br>
+      <div>
+      <button (click)="W_est(abv_des.value, Volume.value)">Calculate</button>
+      <p>You should add {{math.round(10*w_lme)/10}} lb LME</p>
+      </div>
+  <br>
+
+</div>
+
