@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./timer.component.css']
 })
 export class TimerComponent {
-    secondsLeft: number = 20;
-    modSecondsLeft: number=20;
+    secondsLeft: number = 0;
+    modSecondsLeft: number=0;
     minutesLeft: number = 0;
     modMinutesLeft: number = 0;
     hoursLeft: number = 0;
     interval;
     paused: boolean = true;
-    times:number[] = [60, 55, 20, 15, 10, 0];
+    times:number[] = [60, 20, 55, 15, 10, 0];
     amount:number[] = [1,1,1,1,1,1];
     units:string[] = ["oz", "tsp", "oz", "g", "oz", "oz"];
     identity:string[]= ["hops", "gypsum", "hops", "irish moss", "hops", "hops"];
@@ -127,6 +127,20 @@ export class TimerComponent {
         */
         //console.log(this.recipe)
     }
+    deleteStep(step){
+        for (let i = 0; i < this.recipe.length; i++){
+            if (this.recipe[i] == step){
+                this.recipe.splice(i,1)
+                this.times.splice(i,1)
+                this.units.splice(i,1)
+                this.amount.splice(i,1)
+                this.identity.splice(i,1)
+            }
+        }
+        this.buildRecipe()
+
+        return;
+    }
     addIngredient(t, a, u, id){
         console.log("Hello")
 
@@ -145,19 +159,54 @@ export class TimerComponent {
     }
 
     buildStep(index){
-        var ret=this.times[index].toString();
+        //var ret = (index + 1) + ". ";
+        var ret = this.times[index].toString();
+        //var ret=this.times[index].toString();
         ret += " minutes: ";
         ret += this.amount[index].toString() + " ";
         ret += this.units[index]+" of "+this.identity[index];
+        ret += "        "
         return ret;
     }
 
     buildRecipe(){
+
         this.recipe=[]
+        /*
         for(let i = 0; i < this.times.length; i++){
             this.recipe.push(this.buildStep(i));
         }
-        console.log(this.recipe)
+        */
+        //console.log(this.recipe[0])
+
+        let step_order:number[]=[0]
+
+        for (let i = 1; i < this.times.length; i++){
+            if (this.times[i] <= this.times[step_order[step_order.length-1]]){
+                //step_order.push(i)
+                step_order.splice(step_order.length,0,i)
+            }
+            else{
+                for (let j = 0; j < step_order.length; j++){
+                    if (this.times[i] > this.times[step_order[j]]){
+                        step_order.splice(j, 0, i);
+                        break;
+                    }
+                }
+            }
+        }
+
+        /*
+        for(let i = 1; i < this.times.length; i++){
+            step_order.push(i);
+        }
+        */
+        for(let i = 0; i < this.times.length; i++){
+            this.recipe.push(this.buildStep(step_order[i]));
+        }
+
+        //console.log(step_order[0])
+
     }
 
     changeCurrStep(){
@@ -182,17 +231,17 @@ export class TimerComponent {
 
       IBU(W, A, V, T, OG){
         this.prev=0;
-        this.inter=0; 
+        this.inter=0;
 
         if (T==0){
             return false;
         }
-      
+
         if (T>70 || T%5!=0){
             alert('Time must be multiple of 5 and less than 70')
         }
 
-        
+
 
         for(let i = 0; i < 11; i++){
             if (OG==this.util[0][i]){

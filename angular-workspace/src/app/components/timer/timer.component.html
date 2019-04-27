@@ -37,6 +37,10 @@
 
 <div class="recipe">
     <h2> {{recipe}} </h2>
+    <ul>
+        <li *ngFor="let step of recipe; let i = index">{{i+1}}: {{step}}
+        <button (click)="deleteStep(step)">Delete</button>
+    </ul>
     <button (click) = 'deleteRecipe(t.value, a.value, u.value, i.value)'>Delete Recipe</button>
     <br><br>
 
