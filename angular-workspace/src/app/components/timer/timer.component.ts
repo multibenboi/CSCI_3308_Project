@@ -69,7 +69,7 @@ export class TimerComponent {
         this.interval = setInterval(() =>{
             if(this.secondsLeft>0){
                 this.secondsLeft--;
-                if(this.secondsLeft == this.times[this.step_idx+1]){
+                if(this.minutesLeft == this.times[this.step_idx+1]){
                     this.step_idx+=1;
                     this.changeCurrStep();
                 }
@@ -128,13 +128,23 @@ export class TimerComponent {
         //console.log(this.recipe)
     }
     deleteStep(step){
+        //console.log(step)
+        //console.log(this.recipe)
         for (let i = 0; i < this.recipe.length; i++){
             if (this.recipe[i] == step){
+                console.log(i)
+                console.log(this.recipe[i])
                 this.recipe.splice(i,1)
+                console.log(this.recipe)
                 this.times.splice(i,1)
+                console.log(this.times)
                 this.units.splice(i,1)
+                console.log(this.units)
                 this.amount.splice(i,1)
+                console.log(this.amount)
                 this.identity.splice(i,1)
+                console.log(this.identity)
+                break;
             }
         }
         this.buildRecipe()
@@ -142,14 +152,15 @@ export class TimerComponent {
         return;
     }
     addIngredient(t, a, u, id){
-        console.log("Hello")
-
+        //console.log(t)
+        console.log(this.recipe);
         this.times.push(t)
         this.amount.push(a)
         this.units.push(u)
         this.identity.push(id)
-        console.log(this.times[0])
+        //console.log(this.times)
         this.buildRecipe()
+        console.log(this.recipe);
     }
     playAlert(){
         var audio = new Audio();
@@ -204,7 +215,7 @@ export class TimerComponent {
         for(let i = 0; i < this.times.length; i++){
             this.recipe.push(this.buildStep(step_order[i]));
         }
-
+        //console.log(this.recipe)
         //console.log(step_order[0])
 
     }

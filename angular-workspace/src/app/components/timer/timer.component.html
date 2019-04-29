@@ -1,80 +1,3 @@
-<div class="add_recipe">
-    <h1>Add New Recipe</h1>
-
-    <form>
-
-        <div>
-            <label for="name">Name: </label>
-            <input type="string" #name>
-        </div>
-        <br>
-        <div>
-                <label for="F_V">Total Fermentation Volume (gal): </label>
-                <input type="number" #F_V>
-        </div>
-        <br>
-        <div>
-                <label for="B_V">Total Boil Volume (gal): </label>
-                <input type="number" #B_V>
-        </div>
-        <br>
-        <div>
-                <label for="ABV_target">Target ABV (%): </label>
-                <input type="number" #ABV_target>
-        </div>
-        <br>
-        <div>
-        <button (click)="W_est(ABV_target.value, F_V.value)">Calculate Sugar</button>
-         <p>You should add {{math.round(10*w_lme)/10}} lb LME</p>
-        </div>
-
-
-
-    </form>
-
-</div>
-
-
-<div class="recipe">
-    
-    
-        <h2> Add Ingredient </h2>
-        <form>
-                <label for="t">Time (from end of boil):</label>
-                <input type="number" #t>
-        </form>
-        <form>
-                <label for="a">Amount:</label>
-                <input type="number" #a>
-        </form>
-        <form>
-                <label for="u">Units:</label>
-                <input type="string" #u>
-        </form>
-        <form>
-                <label for="alpha">Alpha Acid % (hops only):</label>
-                <input type="number" #alpha>
-        </form>
-        <form>
-                <label for="i">Identity:</label>
-                <input type="string" #i>
-        </form>
-        <button (click)='addIngredient(t.value, a.value, u.value, i.value)'> Add It</button>
-        <br>
-        <br>
-
-    <h2>Boil Additions</h2>
-        <ul>
-            <li *ngFor="let step of recipe; let i = index">{{i+1}}: {{step}}
-            <button (click)="deleteStep(step)">Delete</button>
-        </ul>
-        <button (click) = 'deleteRecipe(t.value, a.value, u.value, i.value)'>Delete Recipe</button>
-        <br><br>
-
-</div>
-
-
-
 <div class="timerapp">
   <h1>
     This is the timer:
@@ -112,7 +35,34 @@
 </div>
 
 
+<div class="recipe">
+    <h2> {{recipe}} </h2>
+    <ul>
+        <li *ngFor="let step of recipe; let i = index">{{i+1}}: {{step}}
+        <button (click)="deleteStep(step)">Delete</button>
+    </ul>
+    <button (click) = 'deleteRecipe(t.value, a.value, u.value, i.value)'>Delete Recipe</button>
+    <br><br>
 
+    <h2> Add Ingredient </h2>
+    <form>
+            <label for="t">Time:</label>
+            <input type="number" #t>
+    </form>
+    <form>
+            <label for="a">Amount:</label>
+            <input type="number" #a>
+    </form>
+    <form>
+            <label for="u">Units:</label>
+            <input type="string" #u>
+    </form>
+    <form>
+            <label for="i">Identity:</label>
+            <input type="string" #i>
+    </form>
+    <button (click)='addIngredient(t.value, a.value, u.value, i.value)'> Add It</button>
+</div>
 
 
 
@@ -188,5 +138,53 @@
   <br>
 
 
+  <h2>Alcohol Estimate</h2>
+
+  <form>
+      <div>
+          <label for = "Weight">Enter weight of LME (lb):</label><br>
+          <input type="number" #Weight>
+      </div>
+  </form>
+  <br>
+  <form>
+      <div>
+          <label for = "Volume">Enter volume of batch (gal):</label><br>
+          <input type="number" #Volume>
+      </div>
+  </form>
+  <br>
+
+      <br>
+      <div>
+      <button (click)="ABV_est2(Weight.value, Volume.value)">Calculate</button>
+      <p>The calculated ABV is {{math.round(10*alc_est2)/10}} %</p>
+      </div>
+  <br>
 
 
+  <h2>Liquid Malt Extract Estimate</h2>
+
+  <form>
+      <div>
+          <label for = "abv_des">Enter desired ABV (%):</label><br>
+          <input type="number" #abv_des>
+      </div>
+  </form>
+  <br>
+  <form>
+      <div>
+          <label for = "Volume">Enter volume of batch (gal):</label><br>
+          <input type="number" #Volume>
+      </div>
+  </form>
+  <br>
+
+      <br>
+      <div>
+      <button (click)="W_est(abv_des.value, Volume.value)">Calculate</button>
+      <p>You should add {{math.round(10*w_lme)/10}} lb LME</p>
+      </div>
+  <br>
+
+</div>
