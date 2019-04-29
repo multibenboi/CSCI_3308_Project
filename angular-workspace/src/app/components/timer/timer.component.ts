@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { isNumber } from 'util';
 
 @Component({
   selector: 'app-timer',
@@ -13,7 +14,7 @@ export class TimerComponent {
     hoursLeft: number = 0;
     interval;
     paused: boolean = true;
-    times:number[] = [60, 20, 55, 15, 10, 0];
+    times:number[] = [60, 55, 20, 15, 10, 0];
     amount:number[] = [1,1,1,1,1,1];
     units:string[] = ["oz", "tsp", "oz", "g", "oz", "oz"];
     identity:string[]= ["hops", "gypsum", "hops", "irish moss", "hops", "hops"];
@@ -69,7 +70,7 @@ export class TimerComponent {
         this.interval = setInterval(() =>{
             if(this.secondsLeft>0){
                 this.secondsLeft--;
-                if(this.minutesLeft == this.times[this.step_idx+1]){
+                if(this.secondsLeft == this.times[this.step_idx+1]){
                     this.step_idx+=1;
                     this.changeCurrStep();
                 }
@@ -128,23 +129,13 @@ export class TimerComponent {
         //console.log(this.recipe)
     }
     deleteStep(step){
-        //console.log(step)
-        //console.log(this.recipe)
         for (let i = 0; i < this.recipe.length; i++){
             if (this.recipe[i] == step){
-                console.log(i)
-                console.log(this.recipe[i])
                 this.recipe.splice(i,1)
-                console.log(this.recipe)
                 this.times.splice(i,1)
-                console.log(this.times)
                 this.units.splice(i,1)
-                console.log(this.units)
                 this.amount.splice(i,1)
-                console.log(this.amount)
                 this.identity.splice(i,1)
-                console.log(this.identity)
-                break;
             }
         }
         this.buildRecipe()
@@ -152,15 +143,28 @@ export class TimerComponent {
         return;
     }
     addIngredient(t, a, u, id){
-        //console.log(t)
-        console.log(this.recipe);
-        this.times.push(t)
+        console.log("Hello")
+
+        /*this.times.push(t)
         this.amount.push(a)
         this.units.push(u)
-        this.identity.push(id)
-        //console.log(this.times)
+        this.identity.push(id)*/
+
+        console.log(isNumber(parseInt(t)));
+
+        let idx: number=0;
+        for (idx =0; idx<this.times.length; idx++){
+            if (t>=this.times[idx]){
+                break;
+            }
+        }
+        this.times.splice(idx, 0, parseInt(t));
+        this.amount.splice(idx, 0, parseInt(a));
+        this.units.splice(idx,0, u);
+        this.identity.splice(idx, 0, id);
+
+        console.log(this.times)
         this.buildRecipe()
-        console.log(this.recipe);
     }
     playAlert(){
         var audio = new Audio();
@@ -215,7 +219,7 @@ export class TimerComponent {
         for(let i = 0; i < this.times.length; i++){
             this.recipe.push(this.buildStep(step_order[i]));
         }
-        //console.log(this.recipe)
+
         //console.log(step_order[0])
 
     }
@@ -299,6 +303,8 @@ export class TimerComponent {
       }
 
       W_est(ABV, V){
+        alert("hi");
         this.w_lme = ABV*V/3.593625;
       }
 }
+
