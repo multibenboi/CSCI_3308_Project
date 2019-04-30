@@ -17,6 +17,7 @@ export class TimerComponent {
     times:number[] = [60, 55, 20, 15, 10, 0];
     amount:number[] = [1,1,1,1,1,1];
     units:string[] = ["oz", "tsp", "oz", "g", "oz", "oz"];
+    ibus:number[] = [1,1,1,1,1,1];
     identity:string[]= ["hops", "gypsum", "hops", "irish moss", "hops", "hops"];
     step_idx:number=0;
     stepString:string="";
@@ -30,8 +31,12 @@ export class TimerComponent {
     og_est: number = 0;
     fg_est: number = 0;
     alc_est2: number = 0;
+    ibu_add: number = 0;
     ibu: number = 0;
     w_lme: number = 0;
+    name: string="";
+    boil_v: number=0;
+    final_v: number=0;
 
     util: number[][] = [[0, 1.030, 1.040, 1.050, 1.060, 1.070, 1.080, 1.090, 1.100, 1.110, 1.120,],
     [5, 0.055, 0.050, 0.046, 0.042, 0.038, 0.035, 0.032, 0.029, 0.027, 0.025],
@@ -119,14 +124,7 @@ export class TimerComponent {
         this.identity=[]
         this.amount=[]
         this.buildRecipe()
-        /*
-        this.times.push(t)
-        this.amount.push(a)
-        this.units.push(u)
-        this.identity.push(id)
-        this.buildRecipe()
-        */
-        //console.log(this.recipe)
+        
     }
     deleteStep(step){
         for (let i = 0; i < this.recipe.length; i++){
@@ -142,15 +140,26 @@ export class TimerComponent {
 
         return;
     }
-    addIngredient(t, a, u, id){
-        console.log("Hello")
+    addIngredient(t, a, alpha, u, id){
+        //console.log("Hello")
 
         /*this.times.push(t)
         this.amount.push(a)
         this.units.push(u)
         this.identity.push(id)*/
 
-        console.log(isNumber(parseInt(t)));
+        if (!alpha){
+            this.ibu_add=0;
+        }
+        else if (t==0){
+            this.ibu_add=0;
+        }
+        else{
+            this.IBU(a, alpha, t);
+        }
+
+
+        //console.log(isNumber(t),t);
 
         let idx: number=0;
         for (idx =0; idx<this.times.length; idx++){
@@ -160,11 +169,13 @@ export class TimerComponent {
         }
         this.times.splice(idx, 0, parseInt(t));
         this.amount.splice(idx, 0, parseInt(a));
+        this.ibus.splice(idx, 0, this.ibu_add);
         this.units.splice(idx,0, u);
         this.identity.splice(idx, 0, id);
 
-        console.log(this.times)
+        //console.log(this.times)
         this.buildRecipe()
+        
     }
     playAlert(){
         var audio = new Audio();
@@ -175,6 +186,7 @@ export class TimerComponent {
 
     buildStep(index){
         //var ret = (index + 1) + ". ";
+        //console.log(this.times)
         var ret = this.times[index].toString();
         //var ret=this.times[index].toString();
         ret += " minutes: ";
@@ -226,14 +238,14 @@ export class TimerComponent {
 
     changeCurrStep(){
         this.stepString=this.buildStep(this.step_idx);
-        console.log(this.stepString);
+        //console.log(this.stepString);
     }
 
 
 
 
     ABV_act(OG, FG){
-        console.log(OG<FG);
+        //console.log(OG<FG);
         if (OG<FG){
             alert('Original Gravity must be greater than Final Gravity');
 
@@ -244,10 +256,11 @@ export class TimerComponent {
         return false;
       }
 
-      IBU(W, A, V, T, OG){
+      IBU(W, A, T){
         this.prev=0;
         this.inter=0;
 
+        //not ibus for additions at 0 time
         if (T==0){
             return false;
         }
@@ -259,13 +272,13 @@ export class TimerComponent {
 
 
         for(let i = 0; i < 11; i++){
-            if (OG==this.util[0][i]){
+            if (this.og_est==this.util[0][i]){
                 this.prev=i;
                 break;
             }
 
-            if (OG<this.util[0][i]){
-                this.inter=(OG-this.util[0][this.prev])/(this.util[0][i]-this.util[0][this.prev]);
+            if (this.og_est<this.util[0][i]){
+                this.inter=(this.og_est-this.util[0][i])/(this.util[0][this.prev]-this.util[0][i]);
                 break;
             }
             this.prev=i;
@@ -273,13 +286,17 @@ export class TimerComponent {
 
         for(let j = 0; j < this.util.length; j++){
             if (T==this.util[j][0]){
-                this.u=this.util[j][this.prev]+this.inter*(this.util[j][this.prev +1]-this.util[j][this.prev]);
+                this.u=this.util[j][this.prev+1]+this.inter*(this.util[j][this.prev]-this.util[j][this.prev+1]);
                 break;
             }
 
         }
+        
+        let v: number=0;
+        v=this.final_v*3.78541;
 
-        this.ibu=this.u*W*A*1000/V;
+        this.ibu_add=28.3495*this.u*Number(W)*Number(A)*10/v;
+        //console.log(this.ibu_add,Number(W),Number(A),v,this.u, this.og_est);
         return false;
       }
 
@@ -302,9 +319,11 @@ export class TimerComponent {
         this.alc_est2 = 131.25*0.0074*0.74*W*5/V;
       }
 
-      W_est(ABV, V){
-        alert("hi");
-        this.w_lme = ABV*V/3.593625;
+      New_Rec(ABV, F_V, name, B_V){
+        this.w_lme = ABV*F_V/3.593625;
+        this.final_v=F_V;
+        this.boil_v=B_V;
+        this.name=name;
+        this.OG_est(this.w_lme);
       }
 }
-
