@@ -1,7 +1,7 @@
 <div class="new_rec">
 
     <h1>Create New Recipe</h1>
-    
+
     <form>
             <div>
                 <label for = "name">Enter a name for the beer:</label><br>
@@ -42,13 +42,13 @@
 
 
 
-  
-  
+
+
   <div class="steps">
       <h1> {{stepString}} </h1>
   </div>
-  
-  
+
+
   <div class="recipe">
 
         <h2> Add Ingredient </h2>
@@ -85,20 +85,21 @@
       <div>
           <p>Total IBUs are : {{ibu}}</p>
       </div>
-  
-      
+
+
   </div>
 
-  
-  
+
+
   <div class="timerapp">
         <h1>
           Timer:
         </h1>
-      
+
         <button (click)='startTimerIfPaused()'>Start Time</button>
         <button (click)='pauseTimer()'> Pause</button>
         <br><br>
+        <!--
         <form (submit)="changeTime(t.value)">
             <div>
                 <label for="t">Time:</label>
@@ -106,6 +107,7 @@
             </div>
         </form>
         <br><br>
+        -->
         <form>
                 <label for="h">Hours:</label>
                 <input type="number" #h>
@@ -123,9 +125,9 @@
       </div>
   <!--
   <div class="equations">
-  
+
     <h2>Alcohol by Volume (ABV)</h2>
-  
+
     <form>
         <div>
             <label for = "OG">Enter Original Gravity Measured:</label><br>
@@ -139,7 +141,7 @@
             <input type="number" #FG>
         </div>
     </form>
-  
+
         <br>
         <div>
         <button (click)="ABV_act(OG.value, FG.value)">Calculate</button>
@@ -147,10 +149,10 @@
         <p>The hop utilization is  is {{util[1][1]}} %</p>
         </div>
     <br>
-  
-  
+
+
     <h2>International Bitterness Units (IBU)</h2>
-  
+
     <form>
         <div>
             <label for = "W">Enter Weight of hop addition (grams):</label><br>
@@ -191,11 +193,11 @@
     <p>The calculated IBU is {{ibu}}</p>
     </div>
     <br>
-  
-  
-  
+
+
+
     <h2>Liquid Malt Extract Estimate</h2>
-  
+
     <form>
         <div>
             <label for = "abv_des">Enter desired ABV (%):</label><br>
@@ -210,12 +212,12 @@
         </div>
     </form>
     <br>
-  
+
         <br>
         <div>
         <button (click)="W_est(abv_des.value, Volume.value)">Calculate</button>
         <p>You should add {{math.round(10*w_lme)/10}} lb LME</p>
         </div>
     <br>
-  
+
   </div> -->
