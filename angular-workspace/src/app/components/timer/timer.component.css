@@ -4,14 +4,21 @@ float:right; */
 div.timerapp {
   float: right;
   width: 79%;
+  font-family: "American Typewriter", Helvetica, sans-serif;
 }
 
 div.steps {
     float: right;
     width: 79%;
+    font-family: "American Typewriter", Helvetica, sans-serif;
 }
 
 div.recipe{
     float: right;
     width: 79%;
+    font-family: "American Typewriter", Helvetica, sans-serif;
+}
+
+div.new_rec {
+  font-family: "American Typewriter", Helvetica, sans-serif;
 }

@@ -1,7 +1,7 @@
 div.titlebanner {
   color: black;
   font-family: "American Typewriter", Helvetica, sans-serif;
-  background-color: #edb001;
+  background-color: #64ed9d;
   border: 1px solid black;
   float: left;
   width: 100%;
@@ -10,7 +10,7 @@ div.titlebanner {
 div.userbanner{
     color: black;
     font-family: "American Typewriter", Helvetica, sans-serif;
-    background-color: #edb001;
+    background-color: #64ed9d;
     float: right;
     width: 80%;
 }
@@ -22,7 +22,7 @@ div.navbar {
   border-top: none;
   min-height: 1800px;
   overflow: hidden;
-  background-color: #edb001;
+  background-color: #64ed9d;
 }
 
 h2.button {
