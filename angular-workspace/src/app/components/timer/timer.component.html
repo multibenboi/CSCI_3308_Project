@@ -44,11 +44,6 @@
 
 
 
-  <div class="steps">
-      <h1> {{stepString}} </h1>
-  </div>
-
-
   <div class="recipe">
 
         <h2> Add Ingredient </h2>
@@ -123,6 +118,10 @@
         <button (click)='changeTime2(h.value, m.value, s.value)'> Add Time</button>
         <p>{{hoursLeft}} Hours {{modMinutesLeft}} Minutes {{modSecondsLeft}} Seconds Left....</p>
       </div>
+
+      <div class="steps">
+        <h1> {{stepString}} </h1>
+    </div>
   <!--
   <div class="equations">
 
