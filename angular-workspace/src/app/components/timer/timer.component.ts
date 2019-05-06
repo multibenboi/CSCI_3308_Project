@@ -37,6 +37,7 @@ export class TimerComponent {
     name: string="";
     boil_v: number=0;
     final_v: number=0;
+    ibu_sub: number=0;
 
     util: number[][] = [[0, 1.030, 1.040, 1.050, 1.060, 1.070, 1.080, 1.090, 1.100, 1.110, 1.120,],
     [5, 0.055, 0.050, 0.046, 0.042, 0.038, 0.035, 0.032, 0.029, 0.027, 0.025],
@@ -134,6 +135,11 @@ export class TimerComponent {
                 this.units.splice(i,1)
                 this.amount.splice(i,1)
                 this.identity.splice(i,1)
+                this.ibu_sub=this.ibus[i];
+                this.ibu=this.ibu-this.ibu_sub;
+                //console.log(this.ibus);
+                this.ibus.splice(i,1);
+                //console.log(this.ibus);
             }
         }
         this.buildRecipe()
@@ -172,6 +178,7 @@ export class TimerComponent {
         this.ibus.splice(idx, 0, this.ibu_add);
         this.units.splice(idx,0, u);
         this.identity.splice(idx, 0, id);
+        this.ibu= this.ibu+this.ibu_add;
 
         //console.log(this.times)
         this.buildRecipe()
